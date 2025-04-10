@@ -4,7 +4,7 @@
   <br>
 </h1>
 
-<h4 align="center">A minimal country expense tracker mobile app using <a href="https://expo.dev" target="_blank">Expo React Native</a>.</h4>
+<h4 align="center">A minimal expense tracker mobile app using <a href="https://expo.dev" target="_blank">Expo React Native</a>.</h4>
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
