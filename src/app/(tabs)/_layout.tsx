@@ -11,14 +11,14 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Tab One',
+          title: 'Expense Tracker',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="new"
+        name="new/index"
         options={{
-          title: 'Tab Two',
+          title: 'New Expense',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
