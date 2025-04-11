@@ -15,7 +15,12 @@
   <a href="#license">License</a>
 </p>
 
-![screenshot](./assets/screenshot.png)
+<div align="center">
+    <img src="./assets/Screenshot_1744350195.png" width="25%" />
+    <img src="./assets/Screenshot_1744350192.png" width="25%" />
+    <img src="./assets/Screenshot_1744350204.png" width="25%" />
+    <img src="./assets/Screenshot_1744350200.png" width="25%" />
+</div>
 
 ## Available Features
 
@@ -53,7 +58,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com), [Node
 4. Setup your .env file
 
     ```bash
-    cat .env.example > .env.local
+    cp .env.example > .env.local
     ```
 
 5. Run the development server
