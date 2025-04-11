@@ -1,9 +1,14 @@
-import { SafeAreaView } from 'react-native';
+import React from 'react';
+import { SafeAreaView, ScrollView, ViewProps } from 'react-native';
 
-export const Container = ({ children }: { children: React.ReactNode }) => {
-  return <SafeAreaView className={styles.container}>{children}</SafeAreaView>;
-};
+import { cn } from '@lib/utils';
 
-const styles = {
-  container: 'flex flex-1 m-6',
-};
+export const Container = React.forwardRef<SafeAreaView, ViewProps>(
+  ({ className, ...props }, ref) => {
+    return (
+      <ScrollView>
+        <SafeAreaView className={cn('m-6 flex flex-1', className)} {...props} ref={ref} />
+      </ScrollView>
+    );
+  }
+);
