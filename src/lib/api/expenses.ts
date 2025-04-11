@@ -12,7 +12,7 @@ export interface Expense {
   updated_at: Date;
 }
 
-export type ExpenseCreateInput = Omit<Expense, 'id'>;
+export type ExpenseCreateInput = Omit<Expense, 'id' | 'created_at' | 'updated_at'>;
 export type ExpenseUpdateInput = Partial<ExpenseCreateInput>;
 
 // API base URL
@@ -38,7 +38,7 @@ export const updateExpense = async ({
   id,
   ...data
 }: { id: string } & ExpenseUpdateInput): Promise<Expense> => {
-  const response = await axios.patch(`${API_BASE_URL}/${id}`, data);
+  const response = await axios.put(`${API_BASE_URL}/${id}`, data);
   return response.data.data;
 };
 

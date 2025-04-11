@@ -5,8 +5,8 @@ export const APP_DESCRIPTION = 'This is a sample app description.';
 export const APP_AUTHOR = 'Your Name';
 export const APP_AUTHOR_URL = 'https://yourwebsite.com';
 
-export const BACKEND_HOST = '192.168.123.106';
-export const BACKEND_PORT = 8080;
+export const BACKEND_HOST = process.env.BACKEND_HOST || '192.168.123.106';
+export const BACKEND_PORT = process.env.BACKEND_PORT || 8080;
 export const BACKEND_URL = `http://${BACKEND_HOST}:${BACKEND_PORT}`;
 
 export const NAV_THEME = {
