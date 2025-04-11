@@ -8,9 +8,10 @@ import { router, Stack, useLocalSearchParams } from 'expo-router';
 
 import { useExpense, useUpdateExpense } from '@lib/api/expenses';
 
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@components/ui/card';
 import { Input } from '@components/ui/input';
 import { Button } from '@components/ui/button';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@components/ui/card';
+
 import { Container } from '@components/container';
 
 import Spinner from '@components/spinner';
@@ -22,8 +23,8 @@ const formSchema = z.object({
 
 function ExpenseUpdate() {
   const { id } = useLocalSearchParams();
-  const { data, isLoading, isError, error } = useExpense(id);
-  const { mutateAsync } = useUpdateExpense(id);
+  const { data, isLoading, isError, error } = useExpense(id as string);
+  const { mutateAsync } = useUpdateExpense();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -44,12 +45,12 @@ function ExpenseUpdate() {
 
   const submitHandler = async (data: z.infer<typeof formSchema>) => {
     try {
-      await mutateAsync({ id: id, ...data });
+      await mutateAsync({ id: id as string, ...data });
 
       form.reset();
 
       // After successful update, navigate to home page
-      router.replace(`/expense/${id}`);
+      router.back();
     } catch (error) {
       console.error('Error updating expense:', error);
     }

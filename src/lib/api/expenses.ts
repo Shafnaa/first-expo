@@ -8,8 +8,8 @@ export interface Expense {
   id: string;
   amount: number;
   notes?: string;
-  created_at: Date;
-  updated_at: Date;
+  created_at: string;
+  updated_at: string;
 }
 
 export type ExpenseCreateInput = Omit<Expense, 'id' | 'created_at' | 'updated_at'>;
@@ -70,6 +70,7 @@ export const useCreateExpense = () => {
     mutationFn: createExpense,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['expenses'] });
+      queryClient.invalidateQueries({ queryKey: ['total'] });
     },
   });
 };
@@ -82,6 +83,7 @@ export const useUpdateExpense = () => {
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['expenses'] });
       queryClient.invalidateQueries({ queryKey: ['expenses', data.id] });
+      queryClient.invalidateQueries({ queryKey: ['total'] });
     },
   });
 };
@@ -93,6 +95,7 @@ export const useDeleteExpense = () => {
     mutationFn: deleteExpense,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['expenses'] });
+      queryClient.invalidateQueries({ queryKey: ['total'] });
     },
   });
 };
